@@ -2,6 +2,7 @@ import { createContext , useContext , useState , useEffect } from 'react'
 import axios from 'axios'
 import {toast} from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css' 
+import { useNavigate } from 'react-router-dom';
 
 const AuthContext = createContext();
 
@@ -10,6 +11,7 @@ export const AuthProvider = ({children}) =>{
 
     const[user , setUser] = useState(null)
     const[loading, setLoading] = useState(true)
+   
 
     // AuthContext.jsx
 useEffect(() => {
@@ -25,6 +27,7 @@ useEffect(() => {
             username: data.username,
             role: data.role
           });
+          
         } else {
           setUser(null);
         }
